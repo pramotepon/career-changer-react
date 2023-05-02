@@ -15,3 +15,22 @@ webServer.get("/", (request, response) => {
 });
 
 // code down below.
+
+webServer.get('/company', (req, res) => {
+  res.json(company);
+});
+
+webServer.post('/company', (req, res) => {
+  const { name, taxId } = req.body;
+  const compId = company.length + 1;
+  const newCompany = {
+    companyId: "comp-" + compId,
+    name: name,
+    taxId: taxId,
+    employees: []
+  }
+  company.push(newCompany);
+  res.json('Create Company Success');
+});
+
+webServer.listen(port, ipAddress);
